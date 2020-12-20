@@ -1,10 +1,11 @@
 import React from 'react';
 import {Paper,Box,Typography} from "@material-ui/core";
 import {makeStyles,createStyles,Theme} from "@material-ui/core";
-import image from '../images/rooms.jpg';
+
 type Props ={
     hero_title:string;
     children:string;
+    img:string;
 }
 
 const useStyle = makeStyles((theme:Theme) =>
@@ -12,16 +13,16 @@ const useStyle = makeStyles((theme:Theme) =>
         paperContainer:{
             flexGrow:1,
             // display:'flex',
-            backgroundImage:`url(${image})`,
+            // backgroundImage:`url(${image})`,
             backgroundPosition: 'center', 
             backgroundSize: 'cover', 
             backgroundRepeat: 'no-repeat',
-            maxHeight:'50vh',
+            maxHeight:'100vh',
             
         },
         box1:{
             width:'100vw',
-            height:'50vh',
+            height:'100vh',
         },
 
         box:{
@@ -54,10 +55,10 @@ const useStyle = makeStyles((theme:Theme) =>
        
     })
 );
-const Hero:React.FC<Props> = ({hero_title,children}) => {
+const Hero:React.FC<Props> = ({hero_title,children,img}) => {
     const classes=useStyle();
     return(
-        <Paper className={classes.paperContainer}>
+        <Paper className={classes.paperContainer} style={{backgroundImage:`url(${img})`}}>
 
             <Box className={classes.box1}  justifyContent="left" alignItems="center">
                 <Box className={classes.box} alignItems='center' p={1}>
