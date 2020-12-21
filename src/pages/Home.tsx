@@ -65,7 +65,7 @@ const Home: React.FC = () =>{
                     </Box>
                 </Box>
             </Paper>
-            <Services></Services>
+            <Services/>
         </div>
     )
 }
