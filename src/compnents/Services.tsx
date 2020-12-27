@@ -1,5 +1,5 @@
-import React, {useEffect, useState} from 'react';
-import {Grid,Typography,Paper,Card,CardActionArea,CardContent,CardMedia} from '@material-ui/core';
+import React from 'react';
+import {Grid,Typography,Paper,Card,CardActionArea,CardContent} from '@material-ui/core';
 import {makeStyles,createStyles,Theme} from '@material-ui/core';
 import {FaCocktail,FaBeer,FaShuttleVan,FaWifi} from 'react-icons/fa';
 export type Service = {
@@ -33,8 +33,8 @@ createStyles({
 
 const Services: React.FC = () =>{
     const classes = useStyle();
-    const [services, setServices] = useState<Service[]>(
-        [
+    // const [services, setServices] = useState<Service[]>(
+    const services = [
             {
                 icon:<FaCocktail/>,
                 title:"free cocktails",
@@ -56,7 +56,7 @@ const Services: React.FC = () =>{
                 description:"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. A arcu cursus vitae congue mauris."
             }
         ]
-    );
+    // );
 
 
     return(
@@ -88,26 +88,6 @@ const Services: React.FC = () =>{
                 </Grid>
                 }
             )}
-{/* 
-            {services.map((item,index) => {
-
-            })} */}
-            
-            {/* <Grid item md={3} sm={6} xs={12}>
-                <Paper className={classes.paper}>
-                    xs3
-                </Paper>
-            </Grid>
-            <Grid item md={3} sm={6} xs={12}>
-                <Paper className={classes.paper}>
-                    xs3
-                </Paper>
-            </Grid>
-            <Grid item md={3} sm={6} xs={12}>
-                <Paper className={classes.paper}>
-                    xs3
-                </Paper>
-            </Grid> */}
         </Grid>        
     )
 }

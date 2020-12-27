@@ -1,11 +1,11 @@
 import React from 'react';
 import {Typography,AppBar,Toolbar} from '@material-ui/core';
 import {List,ListItem,ListItemText} from '@material-ui/core';
-import { createStyles, fade, Theme, makeStyles } from '@material-ui/core/styles';
+import { createStyles, Theme, makeStyles } from '@material-ui/core/styles';
 import {Link} from 'react-router-dom';
-import Home from '../pages/Home';
-import Rooms from '../pages/Rooms';
-import image from '../images/beach-resort-wallpaper.jpg';
+// import Home from '../pages/Home';
+// import Rooms from '../pages/Rooms';
+// import image from '../images/beach-resort-wallpaper.jpg';
 
 
 const useStyle = makeStyles((theme:Theme) =>
@@ -71,24 +71,20 @@ const Header: React.FC =() => {
                 <Typography className={classes.title} variant="h4" component='h3' noWrap> 
                     Beach Resort
                 </Typography>
-
                 <List className={classes.navLinks} component="nav" aria-labelledby="main navigation">
                     <Link to="/" className={classes.linkText} key='HOME'>
                         <ListItem button>
                         <ListItemText primary='HOME' />
                         </ListItem>
                     </Link>
-                    
                     <Link to="/rooms" className={classes.linkText} key='Rooms'>
                         <ListItem button>
                         <ListItemText primary='Rooms' />
                         </ListItem>
                     </Link>
-                    
                 </List>
             </Toolbar>
         </AppBar>
-        
     );
 }
 
