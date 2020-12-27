@@ -3,10 +3,15 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-
+import {BrowserRouter as Router} from 'react-router-dom';
+import {RoomProivder} from './context';
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <RoomProivder>
+      <Router>
+        <App />
+      </Router>
+    </RoomProivder>
     {/* <Footer/> */}
   </React.StrictMode>,
   document.getElementById('root')

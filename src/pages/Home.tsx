@@ -3,6 +3,7 @@ import {Paper,Box,Typography} from '@material-ui/core';
 import {makeStyles,createStyles,Theme} from '@material-ui/core';
 import image from '../images/beach-resort-wallpaper.jpg';
 import Services from '../compnents/Services';
+import FeaturedRooms from '../compnents/FeaturedRooms';
 
 const useStyle = makeStyles((theme:Theme) =>
     createStyles({
@@ -53,7 +54,6 @@ const Home: React.FC = () =>{
     return(
         <div>
             <Paper className={classes.paperContainer}>
-
                 <Box className={classes.box1}  justifyContent="left" alignItems="center" p={2}>
                     <Box className={classes.box} justifyContent='center' alignItems='center' p={1}>
                         <Typography className={classes.headerTitle} variant="h2" component="h2">
@@ -66,6 +66,7 @@ const Home: React.FC = () =>{
                 </Box>
             </Paper>
             <Services/>
+            <FeaturedRooms/>
         </div>
     )
 }
