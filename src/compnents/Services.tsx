@@ -10,9 +10,13 @@ export type Service = {
 
 const useStyle = makeStyles((theme:Theme) =>
 createStyles({
+    mainroot:{
+        boxShadow:'none'
+    },
     root:{
         flexGrow:1,
-        minHeight:'500px',
+        minHeight:'10rem',
+        boxShadow:'none'
     },
     paper:{
         padding:theme.spacing(2),
@@ -24,6 +28,10 @@ createStyles({
             
         }
     },
+    card:{
+        boxShadow:'none',
+    },
+
     cardmedia:{
         
         fontSize:'4rem'
@@ -60,7 +68,7 @@ const Services: React.FC = () =>{
 
 
     return(
-        <Grid container>
+        <Grid container className={classes.mainroot}>
             <Grid item xs={12}>
                 <Paper className={classes.paper}>
                     <Typography variant="h4" component="h4">
@@ -69,9 +77,9 @@ const Services: React.FC = () =>{
                 </Paper>
             </Grid>
             {services.map((service,index)=>{
-                return <Grid item md={3} sm={6} xs={12} key={index}>
+                return <Grid className={classes.root} item md={3} sm={6} xs={12} key={index}>
                     <Paper className={classes.paper}>
-                        <Card>
+                        <Card className={classes.card}>
                             <CardActionArea className={classes.cardmedia}>
                                 {service.icon}
                             </CardActionArea>

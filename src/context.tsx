@@ -30,7 +30,6 @@ class RoomProivder extends Component<Props,State>{
     componentDidMount(){
         let rooms=this.formatData(items);
         let featuredRooms=rooms.filter((room:any) => room.featured === true);
-        console.log(featuredRooms);
 
         this.setState({
             rooms,
