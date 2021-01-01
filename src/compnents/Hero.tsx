@@ -1,11 +1,13 @@
 import React from 'react';
-import {Paper,Box,Typography} from "@material-ui/core";
+import {Paper,Box,Typography,Button} from "@material-ui/core";
 import {makeStyles,createStyles,Theme} from "@material-ui/core";
+import {Link} from 'react-router-dom';
 
 type Props ={
     hero_title:string;
-    children:string;
+    btn:string;
     img:string;
+    link:string;
 }
 
 const useStyle = makeStyles((theme:Theme) =>
@@ -41,7 +43,7 @@ const useStyle = makeStyles((theme:Theme) =>
         },
 
         headerTitle:{
-            color:"white",
+            color:"black",
             position:'relative',
             [theme.breakpoints.down('sm')]:{
                 fontSize:'2.5rem'
@@ -50,12 +52,26 @@ const useStyle = makeStyles((theme:Theme) =>
 
         subtitle:{
             color:'white',
-            fontSize:'1.2rem'
+            marginTop:'2rem',
+            // fontSize:'1.2rem'
+        },
+        button:{
+            border:'3px solid',
+            marginTop:'2rem',
+            "&:hover":{
+                border:'2px solid',
+                color:'white'
+            }
+        },
+        buttonLink:{
+            textDecoration:'none',
+            color:'black',
+            fontWeight:800,
         }
        
     })
 );
-const Hero:React.FC<Props> = ({hero_title,children,img}) => {
+const Hero:React.FC<Props> = ({hero_title,btn,img,link}) => {
     const classes=useStyle();
     return(
         <Paper className={classes.paperContainer} style={{backgroundImage:`url(${img})`}}>
@@ -65,9 +81,7 @@ const Hero:React.FC<Props> = ({hero_title,children,img}) => {
                     <Typography className={classes.headerTitle} variant="h2" component="h2">
                         {hero_title}
                     </Typography>
-                    <Typography variant='subtitle1' component='h6' className={classes.subtitle}>
-                    {children}
-                    </Typography>
+                    <Button variant="outlined" color="primary" className={classes.button}><Link to={link} className={classes.buttonLink}>{btn}</Link></Button>
                 </Box>
                 
             </Box>
