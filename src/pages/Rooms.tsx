@@ -5,7 +5,7 @@ import image from '../images/room2.jpg';
 const Rooms: React.FC = () =>{
     return(
         <div>
-            <Hero hero_title="Rooms" children="best rooms" img={image}/>
+            <Hero hero_title="Rooms" btn="Back to Home" img={image} link="/"/>
         </div>
     )
 }

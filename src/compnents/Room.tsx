@@ -1,8 +1,7 @@
 import React from 'react';
 import {Card,CardActionArea,CardMedia,CardContent,Typography} from '@material-ui/core';
-import {makeStyles,createStyles} from '@material-ui/core';
+import {makeStyles} from '@material-ui/core';
 import {Link} from 'react-router-dom';
-import { dark } from '@material-ui/core/styles/createPalette';
 
 interface roomobject{
  name:string;

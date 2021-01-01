@@ -30,13 +30,13 @@ class FeaturedRooms extends Component<Props,State>{
     render(){
         let {featuredRooms: rooms}=this.context;
         rooms = rooms.map((room:any) => {
-            return <Grid item md={4} sm={6} xs={12} justify="center" alignItems="center" ><Room key={room.id} room={room}/></Grid>
+            return <Grid item md={4} sm={6} xs={12} key={room.id}><Room room={room}/></Grid>
         });
 
         return(
             <ThemeProvider theme={theme}>
                 <Grid container>
-                    <Grid item md={12} sm={12} justify="center" alignItems="center" spacing={4}>
+                    <Grid item md={12} sm={12}>
                         <Typography variant="h4" component="h4" align="center">
                             Featured Rooms
                         </Typography>

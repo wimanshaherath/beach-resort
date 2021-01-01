@@ -2,7 +2,7 @@ import React from 'react';
 import {Route,Switch} from 'react-router-dom';
 import Home from './pages/Home';
 import Rooms from './pages/Rooms';
-import Singlepage from './pages/singlepage';
+import Singlepage from './compnents/singlepage';
 import Error from './pages/Error';
 import Header from './compnents/header';
 
