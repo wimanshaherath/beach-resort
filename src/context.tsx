@@ -1,19 +1,39 @@
 import React,{Component} from 'react';
 import items from './data';
 
+interface Iroom{
+    id:string;
+    name:string;
+    description:string;
+    capacity:number;
+    size:number;
+    price:number;
+    pets:boolean;
+    images:string[];
+    extras:string[];
+    breakfirst:boolean;
+    featured:boolean;
+    type:string;
+    slug:string;
+}
+
 type Props = {
 //   message:string;
 };
 
 type State = {
-    rooms:object;
-    sortedRooms:object;
-    featuredRooms:object;
+    rooms:Iroom[];
+    sortedRooms:Iroom[];
+    featuredRooms:Iroom[];
     loading:boolean;
 };
 
 type RoomContexInterface = {
-
+    rooms:Iroom[];
+    sortedRooms:Iroom[];
+    featuredRooms:Iroom[];
+    loading:boolean;
+    getRooms:any;
 };
 
 const RoomContext = React.createContext<RoomContexInterface | null>(null);
@@ -26,11 +46,9 @@ class RoomProivder extends Component<Props,State>{
         loading: true,
     };
 
-
     componentDidMount(){
         let rooms=this.formatData(items);
         let featuredRooms=rooms.filter((room:any) => room.featured === true);
-
         this.setState({
             rooms,
             featuredRooms,
@@ -66,5 +84,13 @@ class RoomProivder extends Component<Props,State>{
 }
 
 const RoomConsumer = RoomContext.Consumer;
+
+export const withRoomConsumer = (Component:any) =>{
+    return function ConsumerWrapper(props:any){
+        return <RoomConsumer>
+            {(value:RoomContexInterface|null) => <Component {... props} context={value}/>}
+        </RoomConsumer>;
+    }
+}
 
 export {RoomProivder,RoomContext,RoomConsumer};
