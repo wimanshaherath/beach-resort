@@ -45,6 +45,7 @@ const useStyle = makeStyles((theme:Theme) =>
         headerTitle:{
             color:"black",
             position:'relative',
+            textTransform:'capitalize',
             [theme.breakpoints.down('sm')]:{
                 fontSize:'2.5rem'
             }
