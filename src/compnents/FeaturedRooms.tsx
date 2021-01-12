@@ -2,7 +2,7 @@ import React,{Component} from 'react';
 import {RoomContext} from '../context';
 import Room from './Room';
 import {Grid,Typography,createMuiTheme,ThemeProvider} from '@material-ui/core';
-
+import Loading from './Loading';
 type Props={
 
 };
@@ -28,7 +28,7 @@ const theme = createMuiTheme({
 class FeaturedRooms extends Component<Props,State>{
     static contextType = RoomContext;
     render(){
-        let {featuredRooms: rooms}=this.context;
+        let {loading,featuredRooms: rooms}=this.context;
         rooms = rooms.map((room:any) => {
             return <Grid item md={4} sm={6} xs={12} key={room.id}><Room room={room}/></Grid>
         });
@@ -41,7 +41,7 @@ class FeaturedRooms extends Component<Props,State>{
                             Featured Rooms
                         </Typography>
                     </Grid>
-                    {rooms}
+                    {loading?<Loading/>:rooms}
                 </Grid>
             </ThemeProvider>
         )
