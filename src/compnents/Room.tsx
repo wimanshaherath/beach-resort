@@ -1,6 +1,6 @@
 import React from 'react';
 import {Card,CardActionArea,CardMedia,CardContent,Typography} from '@material-ui/core';
-import {makeStyles} from '@material-ui/core';
+import {makeStyles,createStyles,Theme} from '@material-ui/core';
 import {Link} from 'react-router-dom';
 
 interface roomobject{
@@ -14,33 +14,37 @@ type Props = {
    room:roomobject;
 };
 
-const useStyles = makeStyles({
-    root: {
-      maxWidth:'25rem',
-      margin:'0.5rem auto 0.5rem auto',
-      background:'rgb(20,20,28)',
-      border:'1px solid black',
-      color:'white'
-    },
-    media: {
-      height: 140,
-    },
-    content:{
-        textAlign:'center'
-    },
-    title:{
-        fontWeight:700,
-        // fontFamily:'Roboto'
-    },
-    subtitle:{
+const useStyles = makeStyles((theme:Theme) =>
+    createStyles({
+        root: {
+        maxWidth:'25rem',
+        margin:'0.5rem auto 0.5rem auto',
+        background:'rgb(20,20,28)',
+        border:'1px solid black',
         color:'white',
-        fontSize:'1.5rem'
-    },
-    link:{
-        textDecoration:'none'
-    }
+        [theme.breakpoints.down('md')]:{
+            width:'95%'
+        }
+        },
+        media: {
+        height: 140,
+        },
+        content:{
+            textAlign:'center'
+        },
+        title:{
+            fontWeight:700,
+            // fontFamily:'Roboto'
+        },
+        subtitle:{
+            color:'white',
+            fontSize:'1.5rem'
+        },
+        link:{
+            textDecoration:'none'
+        }
 
-  });
+  }));
 
 
 const Room: React.FC<Props> = (props) =>{
