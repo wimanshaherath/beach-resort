@@ -3,6 +3,7 @@ import {RoomContext} from '../context';
 import Room from './Room';
 import {Grid,Typography,createMuiTheme,ThemeProvider} from '@material-ui/core';
 import Loading from './Loading';
+import Title from './Title';
 type Props={
 
 };
@@ -36,11 +37,7 @@ class FeaturedRooms extends Component<Props,State>{
         return(
             <ThemeProvider theme={theme}>
                 <Grid container>
-                    <Grid item md={12} sm={12}>
-                        <Typography variant="h4" component="h4" align="center">
-                            Featured Rooms
-                        </Typography>
-                    </Grid>
+                    <Title title="Featured Rooms"/>
                     {loading?<Loading/>:rooms}
                 </Grid>
             </ThemeProvider>
