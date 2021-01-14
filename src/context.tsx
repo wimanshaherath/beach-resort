@@ -11,7 +11,7 @@ interface Iroom{
     pets:boolean;
     images:string[];
     extras:string[];
-    breakfirst:boolean;
+    breakfast:boolean;
     featured:boolean;
     type:string;
     slug:string;
@@ -26,6 +26,15 @@ type State = {
     sortedRooms:Iroom[];
     featuredRooms:Iroom[];
     loading:boolean;
+    type:string,
+    price:number,
+    minPrice:number,
+    maxPrice:number,
+    capacity:number,
+    minSize:number,
+    maxSize:number,
+    breakfast:boolean,
+    pets:boolean
 };
 
 type RoomContexInterface = {
@@ -44,6 +53,15 @@ class RoomProivder extends Component<Props,State>{
         sortedRooms: [],
         featuredRooms: [],
         loading: true,
+        type:'all',
+        price:0,
+        minPrice:0,
+        maxPrice:0,
+        capacity:1,
+        minSize:0,
+        maxSize:0,
+        breakfast:false,
+        pets:false
     };
 
     componentDidMount(){
@@ -73,7 +91,16 @@ class RoomProivder extends Component<Props,State>{
         const room=tempRooms.find((room:any) => room.slug === slug);
         return room;
     };
+    handleChange = (event:any) =>{
+        const type = event.target.type;
+        const name = event.target.name;
+        const value = event.target.value;
 
+    };
+
+    filterRooms = () =>{
+        console.log("filter room");
+    }
     render(){
         return(
             <RoomContext.Provider value={{...this.state, getRooms:this.getRooms}}>
