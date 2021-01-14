@@ -72,7 +72,7 @@ class Singlepage extends Component<Props,State>{
                 </div>
             )
         };
-        const {description,capacity,size,price,pets,images,extras,breakfirst} = room;
+        const {description,capacity,size,price,pets,images,extras,breakfast} = room;
         return(
 
             <div>
@@ -118,7 +118,7 @@ class Singlepage extends Component<Props,State>{
                                 </ListItem>
                                 <ListItem>
                                     <ListItemText primary="" secondary={
-                                        <Typography variant="subtitle1" component="p">{breakfirst?"Free breakfirst included":"No breakfirst included"}</Typography>
+                                        <Typography variant="subtitle1" component="p">{breakfast?"Free breakfast included":"No breakfast included"}</Typography>
                                     }/> 
                                 </ListItem>
                             </List>
