@@ -20,10 +20,11 @@ const useStyle = makeStyles((theme:Theme) =>
             backgroundSize: 'cover', 
             backgroundRepeat: 'no-repeat',
             maxHeight:'100vh',
+            // width:'100vw'
             
         },
         box1:{
-            width:'100vw',
+            width:'100%',
             height:'100vh',
         },
 
@@ -76,7 +77,6 @@ const Hero:React.FC<Props> = ({hero_title,btn,img,link}) => {
     const classes=useStyle();
     return(
         <Paper className={classes.paperContainer} style={{backgroundImage:`url(${img})`}}>
-
             <Box className={classes.box1}  justifyContent="left" alignItems="center">
                 <Box className={classes.box} alignItems='center' p={1}>
                     <Typography className={classes.headerTitle} variant="h2" component="h2">
@@ -84,10 +84,7 @@ const Hero:React.FC<Props> = ({hero_title,btn,img,link}) => {
                     </Typography>
                     <Button variant="outlined" color="primary" className={classes.button}><Link to={link} className={classes.buttonLink}>{btn}</Link></Button>
                 </Box>
-                
             </Box>
-            
-
         </Paper>
     )
 
