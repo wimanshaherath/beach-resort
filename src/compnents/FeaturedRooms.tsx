@@ -1,7 +1,7 @@
 import React,{Component} from 'react';
 import {RoomContext} from '../context';
 import Room from './Room';
-import {Grid,Typography,createMuiTheme,ThemeProvider} from '@material-ui/core';
+import {Grid,createMuiTheme,ThemeProvider} from '@material-ui/core';
 import Loading from './Loading';
 import Title from './Title';
 type Props={

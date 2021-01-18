@@ -22,7 +22,7 @@ type Props = {
 };
 
 type State = {
-    rooms:Iroom[];
+    rooms:Array<Iroom>;
     sortedRooms:Iroom[];
     featuredRooms:Iroom[];
     loading:boolean;
@@ -34,7 +34,8 @@ type State = {
     minSize:number,
     maxSize:number,
     breakfast:boolean,
-    pets:boolean
+    pets:boolean,
+    
 };
 
 type RoomContexInterface = {
@@ -43,6 +44,16 @@ type RoomContexInterface = {
     featuredRooms:Iroom[];
     loading:boolean;
     getRooms:any;
+    type:string,
+    price:number,
+    minPrice:number,
+    maxPrice:number,
+    capacity:number,
+    minSize:number,
+    maxSize:number,
+    breakfast:boolean,
+    pets:boolean
+    handleChange:any;
 };
 
 const RoomContext = React.createContext<RoomContexInterface | null>(null);
@@ -56,7 +67,7 @@ class RoomProivder extends Component<Props,State>{
         type:'all',
         price:0,
         minPrice:0,
-        maxPrice:0,
+        maxPrice:600,
         capacity:1,
         minSize:0,
         maxSize:0,
@@ -92,18 +103,35 @@ class RoomProivder extends Component<Props,State>{
         return room;
     };
     handleChange = (event:any) =>{
-        const type = event.target.type;
-        const name = event.target.name;
-        const value = event.target.value;
-
+        const target = event.target; 
+        const value = event.type === 'checked'? target.checked:target.value;
+        const name:string = event.target.name;
+        this.setState((prevState) => ({
+            ...prevState,
+            [name]:value
+        }),this.filterRooms)
     };
 
     filterRooms = () =>{
-        console.log("filter room");
+        let {rooms,type,capacity,price,minSize,minPrice,breakfast,pets} = this.state;
+        let tempRooms=[...rooms];
+        capacity = capacity as number;
+
+        //filter by type
+        // if(!tempRooms) {return null;}
+        if(type !== 'all'){
+            tempRooms = tempRooms.filter((room:Iroom) => room.type === type);
+        }
+
+        //filter by capacity
+        tempRooms = tempRooms.filter((room:Iroom) => room.capacity >= capacity);
+        this.setState({
+            sortedRooms:tempRooms
+        });
     }
     render(){
         return(
-            <RoomContext.Provider value={{...this.state, getRooms:this.getRooms}}>
+            <RoomContext.Provider value={{...this.state, getRooms:this.getRooms, handleChange:this.handleChange}}>
                 {this.props.children}
             </RoomContext.Provider>
         );

@@ -13,8 +13,7 @@ const RoomConatiner: React.FC<any> = ({context}) => {
     return(
         <>
             <div>
-                this is room container
-                {/* <RoomFilter rooms={rooms}/> */}
+                <RoomFilter rooms={rooms}/>
                 <RoomList rooms={sortedRooms}/>
             </div>
         </>
