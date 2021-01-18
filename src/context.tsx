@@ -125,9 +125,14 @@ class RoomProivder extends Component<Props,State>{
 
         //filter by capacity
         tempRooms = tempRooms.filter((room:Iroom) => room.capacity >= capacity);
+
+        //fiter by price
+        tempRooms = tempRooms.filter((room:Iroom) => room.price <= price);
+        
         this.setState({
             sortedRooms:tempRooms
         });
+
     }
     render(){
         return(
