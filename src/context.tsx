@@ -65,12 +65,12 @@ class RoomProivder extends Component<Props,State>{
         featuredRooms: [],
         loading: true,
         type:'all',
-        price:0,
+        price:600,
         minPrice:0,
         maxPrice:600,
         capacity:1,
         minSize:0,
-        maxSize:0,
+        maxSize:1000,
         breakfast:false,
         pets:false
     };
@@ -104,7 +104,7 @@ class RoomProivder extends Component<Props,State>{
     };
     handleChange = (event:any) =>{
         const target = event.target; 
-        const value = event.type === 'checked'? target.checked:target.value;
+        const value = target.type === 'checkbox'? target.checked:target.value;
         const name:string = event.target.name;
         this.setState((prevState) => ({
             ...prevState,
@@ -113,12 +113,11 @@ class RoomProivder extends Component<Props,State>{
     };
 
     filterRooms = () =>{
-        let {rooms,type,capacity,price,minSize,minPrice,breakfast,pets} = this.state;
+        let {rooms,type,capacity,price,minSize,maxSize,minPrice,breakfast,pets} = this.state;
         let tempRooms=[...rooms];
         capacity = capacity as number;
 
         //filter by type
-        // if(!tempRooms) {return null;}
         if(type !== 'all'){
             tempRooms = tempRooms.filter((room:Iroom) => room.type === type);
         }
@@ -128,11 +127,25 @@ class RoomProivder extends Component<Props,State>{
 
         //fiter by price
         tempRooms = tempRooms.filter((room:Iroom) => room.price <= price);
-        
+
+        //filter by size
+        tempRooms = tempRooms.filter((room:Iroom) => (room.size>=minSize && room.size<=maxSize))
+
+        //fiter by breakfast
+        if(breakfast){
+            tempRooms = tempRooms.filter((room:Iroom) => room.breakfast === true);
+        }
+
+        //filter by pets
+        if(pets){
+            tempRooms = tempRooms.filter((room:Iroom) => room.pets === true);
+        } 
+
         this.setState({
             sortedRooms:tempRooms
         });
 
+        
     }
     render(){
         return(

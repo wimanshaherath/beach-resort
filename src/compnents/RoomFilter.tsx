@@ -10,7 +10,6 @@ const useStyles = makeStyles((theme:Theme) =>
     createStyles({
         root:{
             flexGrow:1,
-            width:'100vw',
             padding:'1rem',
             minHeight:'7rem',
             
@@ -80,7 +79,22 @@ const RoomFilter: React.FC<Props> = ({rooms}) =>{
                   <input type="range" name = "price" id="range" min={minPrice} max={maxPrice} value={price} onChange={handleChange} className="optionbar"/>
                 </Grid>
 
-                
+                <Grid item md={2} sm={6} xs={12}>
+                  <label htmlFor="size" className="label">Room size</label>  
+                  <input type="text" name="minSize" id="minSize" value={minSize} onChange={handleChange} className="textbox"/>
+                  <input type="text" name="maxSize" id="maxSize" value={maxSize} onChange={handleChange} className="textbox"/>
+
+                </Grid>
+
+                <Grid item md={2} sm={6} xs={12}>
+                  {/* Breakfast */}
+                  <input type="checkbox" name="breakfast" id="breakfast" checked={breakfast} onChange={handleChange} className="checkbox"/>
+                  <label htmlFor="breakfast">Breakfast</label>
+
+                  {/* Pets */}
+                  <input type="checkbox" name="pets" id="pets" checked={pets} onChange={handleChange} className="checkbox"/>
+                  <label htmlFor="pets">Pets</label>
+                </Grid>
             </Grid>
         </form>
         </>
