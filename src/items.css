@@ -1,8 +1,8 @@
 .optionForm{
     width:100%;
     display:flex;
-    padding-left:1rem;
-    padding-right:1rem;
+    /* padding-left:1rem;
+    padding-right:1rem; */
 }
 .label{
     font-size: 1rem;
@@ -10,9 +10,20 @@
     display:block;
     width:100%;
 }
+
+.checkbox{
+    margin:.4rem;
+}
 .optionbar{
     width:80%;
     font-size:1rem;
     margin:.5rem;
     clear:left;
+}
+
+.textbox{
+    width:40%;
+    margin:.2rem;
+    max-height: .8rem;
+
 }
