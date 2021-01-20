@@ -1,5 +1,7 @@
 import React,{Component} from 'react';
-import items from './data';
+// import items from './data';
+import Client from './Contentful';
+
 
 interface Iroom{
     id:string;
@@ -65,25 +67,42 @@ class RoomProivder extends Component<Props,State>{
         featuredRooms: [],
         loading: true,
         type:'all',
-        price:600,
+        price:0,
         minPrice:0,
-        maxPrice:600,
+        maxPrice:0,
         capacity:1,
         minSize:0,
-        maxSize:1000,
+        maxSize:0,
         breakfast:false,
         pets:false
     };
 
+    getData = async () => {
+        try{
+            let response = await Client.getEntries({
+                content_type: 'beachResort',
+                order:'sys.createdAt'
+              });
+              let rooms=this.formatData(response.items);
+              let featuredRooms=rooms.filter((room:any) => room.featured === true);
+              let maxPrice = Math.max(...rooms.map((item:Iroom) => item.price));
+              let maxSize = Math.max(...rooms.map((item:Iroom) => item.size));
+              this.setState({
+                  rooms,
+                  featuredRooms,
+                  sortedRooms:rooms, 
+                  loading:false,
+                  price:maxPrice,
+                  maxPrice,
+                  maxSize
+              });
+            
+        }catch(error){
+            console.log(error);
+        }
+    }
     componentDidMount(){
-        let rooms=this.formatData(items);
-        let featuredRooms=rooms.filter((room:any) => room.featured === true);
-        this.setState({
-            rooms,
-            featuredRooms,
-            sortedRooms:rooms, 
-            loading:false
-        });
+        this.getData();
     };
 
     formatData(items:any){
@@ -113,7 +132,7 @@ class RoomProivder extends Component<Props,State>{
     };
 
     filterRooms = () =>{
-        let {rooms,type,capacity,price,minSize,maxSize,minPrice,breakfast,pets} = this.state;
+        let {rooms,type,capacity,price,minSize,maxSize,breakfast,pets} = this.state;
         let tempRooms=[...rooms];
         capacity = capacity as number;
 
